@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Online Calculator | BMI, EMI & Discount Calculators</title>
+    <meta name="description" content="Use our free online calculator for standard math, BMI tracking, EMI loan calculation, and discounts. Fast, secure, and works offline with zero ads.">
+    <link rel="canonical" href="https://calculator.corelumetech.in/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculator.corelumetech.in/">
+    <meta property="og:title" content="Free Online Calculator | BMI, EMI & Discount Calculators">
+    <meta property="og:description" content="Use our free online calculator for standard math, BMI tracking, EMI loan calculation, and discounts. Fast, secure, and works offline with zero ads.">
+    <meta property="og:image" content="https://calculator.corelumetech.in/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://calculator.corelumetech.in/">
+    <meta property="twitter:title" content="Free Online Calculator | BMI, EMI & Discount Calculators">
+    <meta property="twitter:description" content="Use our free online calculator for standard math, BMI tracking, EMI loan calculation, and discounts. Fast, secure, and works offline with zero ads.">
+    <meta property="twitter:image" content="https://calculator.corelumetech.in/og-image.jpg">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Omni-Calculator",
+      "url": "https://calculator.corelumetech.in/",
+      "description": "Free multi-purpose calculator including Standard, BMI, EMI, and Discount calculations.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://quge5.com/88/tag.min.js" data-zone="265070" async data-cfasync="false"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h1 class="logo">
+                <i class="fa-solid fa-calculator"></i> OmniCalc
+            </h1>
+            <nav class="nav-menu">
+                <button class="nav-btn active" data-target="standard"><i class="fa-solid fa-equals"></i> Standard</button>
+                <button class="nav-btn" data-target="bmi"><i class="fa-solid fa-weight-scale"></i> BMI</button>
+                <button class="nav-btn" data-target="emi"><i class="fa-solid fa-house-chimney"></i> EMI</button>
+                <button class="nav-btn" data-target="discount"><i class="fa-solid fa-tags"></i> Discount</button>
+            </nav>
+
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+
+            <div class="calculator-wrapper">
+                <!-- Standard Calculator -->
+                <section id="standard" class="calc-section active">
+                    <h2>Standard Calculator</h2>
+                    <div class="calc-card standard-calc">
+                        <div class="display">
+                            <div class="previous-operand" id="prev-operand"></div>
+                            <div class="current-operand" id="curr-operand">0</div>
+                        </div>
+                        <div class="keypad">
+                            <button class="btn btn-action" data-action="clear">AC</button>
+                            <button class="btn btn-action" data-action="delete">DEL</button>
+                            <button class="btn btn-operator" data-operator="÷">÷</button>
+                            <button class="btn btn-operator" data-operator="*">×</button>
+                            <button class="btn btn-number" data-number="7">7</button>
+                            <button class="btn btn-number" data-number="8">8</button>
+                            <button class="btn btn-number" data-number="9">9</button>
+                            <button class="btn btn-operator" data-operator="-">-</button>
+                            <button class="btn btn-number" data-number="4">4</button>
+                            <button class="btn btn-number" data-number="5">5</button>
+                            <button class="btn btn-number" data-number="6">6</button>
+                            <button class="btn btn-operator" data-operator="+">+</button>
+                            <button class="btn btn-number" data-number="1">1</button>
+                            <button class="btn btn-number" data-number="2">2</button>
+                            <button class="btn btn-number" data-number="3">3</button>
+                            <button class="btn btn-equals span-two" data-action="equals">=</button>
+                            <button class="btn btn-number span-two" data-number="0">0</button>
+                            <button class="btn btn-number" data-number=".">.</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- BMI Calculator -->
+                <section id="bmi" class="calc-section">
+                    <h2>BMI Calculator</h2>
+                    <div class="calc-card form-calc">
+                        <div class="input-group">
+                            <label for="bmi-weight">Weight (kg)</label>
+                            <input type="number" id="bmi-weight" placeholder="e.g. 70" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="bmi-height">Height (cm)</label>
+                            <input type="number" id="bmi-height" placeholder="e.g. 175" step="1">
+                        </div>
+                        <button class="btn-primary" id="btn-calc-bmi">Calculate BMI</button>
+                        <div class="result-box" id="bmi-result-box" style="display: none;">
+                            <h3>Your BMI: <span id="bmi-value">--</span></h3>
+                            <p id="bmi-category" class="category">--</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- EMI Calculator -->
+                <section id="emi" class="calc-section">
+                    <h2>EMI Calculator</h2>
+                    <div class="calc-card form-calc">
+                        <div class="input-group">
+                            <label for="emi-principal">Loan Amount</label>
+                            <input type="number" id="emi-principal" placeholder="e.g. 500000">
+                        </div>
+                        <div class="input-group">
+                            <label for="emi-rate">Interest Rate (% p.a.)</label>
+                            <input type="number" id="emi-rate" placeholder="e.g. 10.5" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label for="emi-tenure">Loan Tenure (Years)</label>
+                            <input type="number" id="emi-tenure" placeholder="e.g. 5">
+                        </div>
+                        <button class="btn-primary" id="btn-calc-emi">Calculate EMI</button>
+                        <div class="result-box" id="emi-result-box" style="display: none;">
+                            <h3>Monthly EMI: <span id="emi-value">--</span></h3>
+                            <p>Total Interest: <span id="emi-interest">--</span></p>
+                            <p>Total Amount: <span id="emi-total">--</span></p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Discount Calculator -->
+                <section id="discount" class="calc-section">
+                    <h2>Discount Calculator</h2>
+                    <div class="calc-card form-calc">
+                        <div class="input-group">
+                            <label for="disc-price">Original Price</label>
+                            <input type="number" id="disc-price" placeholder="e.g. 1000">
+                        </div>
+                        <div class="input-group">
+                            <label for="disc-percent">Discount (%)</label>
+                            <input type="number" id="disc-percent" placeholder="e.g. 20" step="1" max="100">
+                        </div>
+                        <button class="btn-primary" id="btn-calc-disc">Calculate Discount</button>
+                        <div class="result-box" id="disc-result-box" style="display: none;">
+                            <h3>Final Price: <span id="disc-final">--</span></h3>
+                            <p>You Save: <span id="disc-saved">--</span></p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
