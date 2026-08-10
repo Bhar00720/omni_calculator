@@ -82,6 +82,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
             }
             this.currentOperand = computation.toString();
+            
+            // Add to history
+            const historyList = document.getElementById('history-list');
+            const historyItem = document.createElement('div');
+            historyItem.classList.add('history-item');
+            historyItem.innerText = `${prev} ${this.operation} ${current} = ${computation}`;
+            historyList.appendChild(historyItem);
+            historyList.scrollTop = historyList.scrollHeight;
+
             this.operation = undefined;
             this.previousOperand = '';
         }
@@ -144,6 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('[data-action="delete"]').addEventListener('click', () => {
         calculator.delete();
         calculator.updateDisplay();
+    });
+
+    document.getElementById('clear-history').addEventListener('click', () => {
+        document.getElementById('history-list').innerHTML = '';
     });
 
     // BMI Logic
@@ -215,4 +228,120 @@ document.addEventListener('DOMContentLoaded', () => {
         
         document.getElementById('disc-result-box').style.display = 'block';
     });
+
+    // Date Calculator Logic
+    document.getElementById('btn-calc-date').addEventListener('click', () => {
+        const start = new Date(document.getElementById('date-start').value);
+        const end = new Date(document.getElementById('date-end').value);
+
+        if (isNaN(start) || isNaN(end)) {
+            alert('Please select valid start and end dates.');
+            return;
+        }
+
+        const diffTime = Math.abs(end - start);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+
+        let years = end.getFullYear() - start.getFullYear();
+        let months = end.getMonth() - start.getMonth();
+        let days = end.getDate() - start.getDate();
+
+        if (days < 0) {
+            months--;
+            const previousMonth = new Date(end.getFullYear(), end.getMonth(), 0);
+            days += previousMonth.getDate();
+        }
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        // Adjust if end date is before start date
+        if (end < start) {
+            years = -years;
+            months = -months;
+            days = -days;
+        }
+
+        document.getElementById('date-diff-days').innerText = `${diffDays} days`;
+        document.getElementById('date-diff-detailed').innerText = `${Math.abs(years)} Years, ${Math.abs(months)} Months, ${Math.abs(days)} Days`;
+        document.getElementById('date-result-box').style.display = 'block';
+    });
+
+    // Unit Converter Logic
+    const units = {
+        length: {
+            Meter: 1, Kilometer: 1000, Centimeter: 0.01, Millimeter: 0.001,
+            Mile: 1609.34, Yard: 0.9144, Foot: 0.3048, Inch: 0.0254
+        },
+        weight: {
+            Kilogram: 1, Gram: 0.001, Milligram: 0.000001, MetricTon: 1000,
+            Pound: 0.453592, Ounce: 0.0283495
+        },
+        temperature: {
+            Celsius: 'C', Fahrenheit: 'F', Kelvin: 'K'
+        }
+    };
+
+    const typeSelect = document.getElementById('unit-type');
+    const fromSelect = document.getElementById('unit-from');
+    const toSelect = document.getElementById('unit-to');
+    const inputEl = document.getElementById('unit-input');
+    const outputEl = document.getElementById('unit-output');
+
+    function populateUnits() {
+        const type = typeSelect.value;
+        const options = Object.keys(units[type]);
+        
+        fromSelect.innerHTML = '';
+        toSelect.innerHTML = '';
+        
+        options.forEach(opt => {
+            fromSelect.add(new Option(opt, opt));
+            toSelect.add(new Option(opt, opt));
+        });
+        
+        if (options.length > 1) {
+            toSelect.selectedIndex = 1;
+        }
+        convertUnit();
+    }
+
+    function convertUnit() {
+        const type = typeSelect.value;
+        const from = fromSelect.value;
+        const to = toSelect.value;
+        const val = parseFloat(inputEl.value);
+
+        if (isNaN(val)) {
+            outputEl.value = '';
+            return;
+        }
+
+        let result;
+        if (type === 'temperature') {
+            let celsius;
+            if (from === 'Celsius') celsius = val;
+            else if (from === 'Fahrenheit') celsius = (val - 32) * 5/9;
+            else if (from === 'Kelvin') celsius = val - 273.15;
+
+            if (to === 'Celsius') result = celsius;
+            else if (to === 'Fahrenheit') result = (celsius * 9/5) + 32;
+            else if (to === 'Kelvin') result = celsius + 273.15;
+        } else {
+            const baseVal = val * units[type][from];
+            result = baseVal / units[type][to];
+        }
+
+        outputEl.value = Number.isInteger(result) ? result : result.toFixed(4);
+    }
+
+    typeSelect.addEventListener('change', populateUnits);
+    fromSelect.addEventListener('change', convertUnit);
+    toSelect.addEventListener('change', convertUnit);
+    inputEl.addEventListener('input', convertUnit);
+
+    // Initialize units
+    populateUnits();
 });
