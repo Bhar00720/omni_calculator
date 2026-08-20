@@ -159,6 +159,36 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('history-list').innerHTML = '';
     });
 
+    // Percentage Logic
+    document.getElementById('btn-calc-pct1').addEventListener('click', () => {
+        const x = parseFloat(document.getElementById('pct1-x').value);
+        const y = parseFloat(document.getElementById('pct1-y').value);
+        if (isNaN(x) || isNaN(y)) return;
+        const res = (x / 100) * y;
+        document.getElementById('pct1-out').innerText = res;
+        document.getElementById('pct1-res').style.display = 'block';
+    });
+    document.getElementById('btn-calc-pct2').addEventListener('click', () => {
+        const x = parseFloat(document.getElementById('pct2-x').value);
+        const y = parseFloat(document.getElementById('pct2-y').value);
+        if (isNaN(x) || isNaN(y) || y === 0) return;
+        const res = (x / y) * 100;
+        document.getElementById('pct2-out').innerText = res.toFixed(4).replace(/\.?0+$/, '');
+        document.getElementById('pct2-res').style.display = 'block';
+    });
+    document.getElementById('btn-calc-pct3').addEventListener('click', () => {
+        const x = parseFloat(document.getElementById('pct3-x').value);
+        const y = parseFloat(document.getElementById('pct3-y').value);
+        if (isNaN(x) || isNaN(y) || x === 0) return;
+        const res = ((y - x) / Math.abs(x)) * 100;
+        document.getElementById('pct3-out').innerText = Math.abs(res).toFixed(4).replace(/\.?0+$/, '');
+        const typeEl = document.getElementById('pct3-type');
+        if(res > 0) { typeEl.innerText = "Increase"; typeEl.style.color = "#10b981"; }
+        else if(res < 0) { typeEl.innerText = "Decrease"; typeEl.style.color = "#ef4444"; }
+        else { typeEl.innerText = "No Change"; typeEl.style.color = "var(--text-secondary)"; }
+        document.getElementById('pct3-res').style.display = 'block';
+    });
+
     // BMI Logic
     document.getElementById('btn-calc-bmi').addEventListener('click', () => {
         const weight = parseFloat(document.getElementById('bmi-weight').value);

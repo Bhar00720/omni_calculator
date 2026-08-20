@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online Calculator | BMI, EMI & Discount Calculators</title>
-    <meta name="description" content="Use our free online calculator for standard math, BMI tracking, EMI loan calculation, and discounts. Fast, secure, and works offline with zero ads.">
+    <title>Free Online Calculator — Simple & Scientific Web Calculator</title>
+    <meta name="description" content="Use our fast, responsive, and ad-free online calculator. Perform basic arithmetic, scientific equations, and percentage calculations instantly in your browser.">
+    <meta name="keywords" content="free scientific calculator online, quick web calculator no ads, fast browser calculator tool, simple percentage calculator online">
     <link rel="canonical" href="https://calculator.corelumetech.in/">
     
     <!-- Open Graph / Facebook -->
@@ -49,10 +50,11 @@
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <h1 class="logo">
-                <i class="fa-solid fa-calculator"></i> OmniCalc
+                <i class="fa-solid fa-calculator"></i> Free Online Calculator — Simple & Scientific Web Calculator
             </h1>
             <nav class="nav-menu">
                 <button class="nav-btn active" data-target="standard"><i class="fa-solid fa-equals"></i> Standard</button>
+                <button class="nav-btn" data-target="percent"><i class="fa-solid fa-percent"></i> Percent</button>
                 <button class="nav-btn" data-target="date"><i class="fa-solid fa-calendar-days"></i> Date</button>
                 <button class="nav-btn" data-target="unit"><i class="fa-solid fa-ruler-combined"></i> Unit</button>
                 <button class="nav-btn" data-target="bmi"><i class="fa-solid fa-weight-scale"></i> BMI</button>
@@ -103,6 +105,52 @@
                         <button class="btn-action btn" id="clear-history">Clear History</button>
                     </div>
 
+                </section>
+
+                <!-- Percentage Calculator -->
+                <section id="percent" class="calc-section">
+                    <h2>Percentage Calculator</h2>
+                    
+                    <div class="calc-card form-calc" style="margin-bottom: 20px;">
+                        <h3>What is X% of Y?</h3>
+                        <div class="input-group" style="display: flex; gap: 10px; align-items: center;">
+                            <label style="margin:0;">What is</label>
+                            <input type="number" id="pct1-x" placeholder="X" style="width: 80px; margin: 0;">
+                            <label style="margin:0;">% of</label>
+                            <input type="number" id="pct1-y" placeholder="Y" style="width: 100px; margin: 0;">
+                            <button class="btn-primary" id="btn-calc-pct1" style="padding: 10px; margin: 0; min-width: auto; flex: 1;">=</button>
+                        </div>
+                        <div class="result-box" id="pct1-res" style="display: none; padding: 10px; margin-top: 10px;">
+                            <h3 style="margin:0;">Result: <span id="pct1-out">--</span></h3>
+                        </div>
+                    </div>
+
+                    <div class="calc-card form-calc" style="margin-bottom: 20px;">
+                        <h3>X is what % of Y?</h3>
+                        <div class="input-group" style="display: flex; gap: 10px; align-items: center;">
+                            <input type="number" id="pct2-x" placeholder="X" style="width: 80px; margin: 0;">
+                            <label style="margin:0;">is what % of</label>
+                            <input type="number" id="pct2-y" placeholder="Y" style="width: 100px; margin: 0;">
+                            <button class="btn-primary" id="btn-calc-pct2" style="padding: 10px; margin: 0; min-width: auto; flex: 1;">=</button>
+                        </div>
+                        <div class="result-box" id="pct2-res" style="display: none; padding: 10px; margin-top: 10px;">
+                            <h3 style="margin:0;">Result: <span id="pct2-out">--</span>%</h3>
+                        </div>
+                    </div>
+
+                    <div class="calc-card form-calc">
+                        <h3>% Increase / Decrease</h3>
+                        <div class="input-group" style="display: flex; gap: 10px; align-items: center;">
+                            <label style="margin:0;">From</label>
+                            <input type="number" id="pct3-x" placeholder="X" style="width: 80px; margin: 0;">
+                            <label style="margin:0;">to</label>
+                            <input type="number" id="pct3-y" placeholder="Y" style="width: 80px; margin: 0;">
+                            <button class="btn-primary" id="btn-calc-pct3" style="padding: 10px; margin: 0; min-width: auto; flex: 1;">=</button>
+                        </div>
+                        <div class="result-box" id="pct3-res" style="display: none; padding: 10px; margin-top: 10px;">
+                            <h3 style="margin:0;">Change: <span id="pct3-out">--</span>% (<span id="pct3-type">--</span>)</h3>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- BMI Calculator -->
@@ -224,6 +272,17 @@
                 <h2>About Our Free Online Omni Calculator</h2>
                 <p>Use our free online omni calculator to easily solve math problems, check your health stats with the bmi calculator, plan your finances using the emi calculator, find your exact age with the age calculator, and more! It's completely free, fast, and secure.</p>
             </section>
+            <!-- Cross-Linking Footer -->
+            <div class="card cross-link-footer" style="text-align: center; margin-top: 40px; padding: 20px;">
+                <p style="margin: 0;"><strong>More Free Tools:</strong> 
+                    <a href="https://calculator.corelumetech.in/" style="color: #a5b4fc; text-decoration: none; margin: 0 10px; font-weight: 500;">Calculator</a> | 
+                    <a href="https://color-generator.corelumetech.in/" style="color: #a5b4fc; text-decoration: none; margin: 0 10px; font-weight: 500;">Color Generator</a> | 
+                    <a href="https://dev-tools.corelumetech.in/" style="color: #a5b4fc; text-decoration: none; margin: 0 10px; font-weight: 500;">Dev Tools</a> | 
+                    <a href="https://password-generator.corelumetech.in/" style="color: #a5b4fc; text-decoration: none; margin: 0 10px; font-weight: 500;">Password Generator</a> | 
+                    <a href="https://qr-generator.corelumetech.in/" style="color: #a5b4fc; text-decoration: none; margin: 0 10px; font-weight: 500;">QR Generator</a> | 
+                    <a href="https://text-tools.corelumetech.in/" style="color: #a5b4fc; text-decoration: none; margin: 0 10px; font-weight: 500;">Text Tools</a>
+                </p>
+            </div>
         </main>
     </div>
     <script src="script.js"></script>
